@@ -1,0 +1,59 @@
+body {
+	/* color: red; */
+	width: 80%;
+	margin: auto;
+	margin-top: 3em;
+	background-color: #222241;
+	color: #ddd;
+	font-size: 1.2em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	color: #fff;
+}
+
+a {
+	color: yellow;
+}
+a:visited {
+	color: orange;
+}
+
+img {
+	max-width: 100%;
+}
+
+code {
+	background-color:black;
+	padding: 1px 3px;
+	margin: 1px;
+	border: 1px solid grey;
+}
+pre>code, a>code {
+	background-color: initial;
+	padding: initial;
+	margin: initial;
+	border: initial;
+}
+
+div:has(pre) {
+	box-shadow: 10px 10px black;
+	border: 3px double white;
+}
+pre {
+	padding: 8px;
+	counter-reset: line;
+}
+pre>code>span:before {
+	counter-increment: line;
+	content: counter(line);
+	display: inline-block;
+	border-right: 1px solid #ddd;
+	padding: 0 .5em;
+	margin-right: .5em;
+	color: #888;
+	margin-left:auto;
+	width: 4ch;
+
+
+}

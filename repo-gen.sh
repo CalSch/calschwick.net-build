@@ -26,7 +26,7 @@ repos=$(echo $repos $exclude_repos $exclude_repos | sed 's/ /\n/g' | sort | uniq
 
 # pandoc command wrapper that does timeout and format stuff
 pandoc() {
-	timeout $pandoc_timeout pandoc -f markdown+lists_without_preceding_blankline "$@" || (echo "pandoc timed out :(" ; echo "                                pandoc timeout (args: $@)" 1>&2)
+	timeout $pandoc_timeout pandoc -f markdown+lists_without_preceding_blankline --css style.css --syntax-highlighting=breezedark --embed-resources "$@" || (echo "pandoc timed out :(" ; echo "                                pandoc timeout (args: $@)" 1>&2)
 }
 
 
@@ -106,7 +106,8 @@ for repo in $repos; do
 				echo
 				echo "---"
 				echo
-				echo -e '```'"$(echo "$relative" | sed -E 's/.*\.(\w+)/\1/')\n" # start code fence
+				# fun fact: you can have lots of backticks for code blocks. it helps for when the content itself has triple backticks
+				echo -e '```````'"$(echo "$relative" | sed -E 's/.*\.(\w+)/\1/')\n" # start code fence
 
 				# text files are put directly into the markdown, binary files have (part of) their hex dump
 				if echo "$file_info" | grep -q text; then
@@ -118,7 +119,7 @@ for repo in $repos; do
 				fi
 
 				echo
-				echo -e '\n```\n' # end code fence
+				echo -e '\n```````\n' # end code fence
 			) > "$out_path"
 
 			# append to the repo index text
