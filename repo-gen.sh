@@ -91,6 +91,8 @@ for repo in $repos; do
 			file_mime=$(file --mime-type "$file_path" | cut -d: -f2-)
 			file_size=$(stat "$file_path" -c "%s" | numfmt --to=si)
 			file_lines=$(cat "$file_path" | wc -l)
+			file_sha256=$(cat "$file_path" | sha256sum)
+			file_md5=$(cat "$file_path" | md5sum)
 
 			# generate the markdown file
 			(
@@ -100,7 +102,11 @@ for repo in $repos; do
 				echo
 				echo "$file_info"
 				echo
-				echo "$file_mime"
+				echo "MIME: \`$file_mime\`"
+				echo
+				echo "SHA256: \`$file_sha256\`"
+				echo
+				echo "MD5: \`$file_md5\`"
 				echo
 				echo "[view raw file]($base)"
 				echo
