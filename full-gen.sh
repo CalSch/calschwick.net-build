@@ -19,6 +19,7 @@ canvas-playground
 css-tester
 spirograph
 eulers-spiral
+dabeef
 EOF
 )"
 
