@@ -20,6 +20,7 @@ css-tester
 spirograph
 eulers-spiral
 dabeef
+cardcalc
 EOF
 )"
 
